@@ -1,0 +1,10 @@
+Query for average rental duration:
+
+SELECT  A.name,
+        AVG(D.rental_duration) AS average_rental_duration
+FROM category A
+INNER JOIN film_category B ON A.category_id = B.category_id
+INNER JOIN inventory C ON B.film_id = C.film_id
+INNER JOIN film D ON C.film_id = D.film_id
+GROUP BY A.name
+ORDER BY average_rental_duration
