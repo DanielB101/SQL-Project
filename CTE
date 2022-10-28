@@ -1,0 +1,10 @@
+Here is a SQL query with a common table expression:
+
+SELECT rating,
+       SUM(D.amount)
+FROM film A
+INNER JOIN inventory B ON A.film_id = B.film_id
+INNER JOIN rental C ON B.inventory_id = C.inventory_id
+INNER JOIN payment D ON C.rental_id = D.rental_id
+GROUP BY rating 
+ORDER BY SUM(D.amount) DESC
